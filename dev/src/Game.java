@@ -22,11 +22,11 @@ public class Game {
             tetrisBoard.addTetrominoToGrid(currentTetromino);
             for (int x=0;x<10;x++){
                 for (int y=0; y<20;y++){
-                    System.out.print(tetrisBoard.getGrid()[x][y]);
+                    System.out.print(tetrisBoard.getGrid().getCell(x, y));
                 }
                 System.out.println();
             }
-            while (currentTetromino.canMoveDown() == false) {}
+            while (currentTetromino.canMoveDown() == null) {}
                 currentTetromino = tetrisBoard.getActualTetromino();
                 tetrisBoard.addTetrominoToGrid(currentTetromino);
                 /** Display on terminal, we don't really need it
@@ -63,7 +63,7 @@ public class Game {
         // Precondition: The game is running
         assert(isRunning);
         Tetromino currentTetromino = game.tetrisBoard.getActualTetromino();
-        if ((currentTetromino.canMoveDown() == false) && (currentTetromino.canMoveDown() == false) && (currentTetromino.canMoveDown() == false)) {
+        if ((currentTetromino.canMoveDown() == null) && (currentTetromino.canMoveDown() == null) && (currentTetromino.canMoveDown() == null)) {
             isRunning = false;
             // Display final score
             System.out.println("Final Score: " + score);

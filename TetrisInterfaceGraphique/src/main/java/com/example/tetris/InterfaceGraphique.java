@@ -123,7 +123,6 @@
                                 game.getTetrisBoard().updateGrid(oldTetromino, game.getCurrentTetromino());
                             }
                         }
-
                         else { downPressed = false;}
 
                         //game.getTetrisBoard().clearLine(game.getTetrisBoard().checkLineCompletion(game.getTetrisBoard().getBoard().getGrid()));

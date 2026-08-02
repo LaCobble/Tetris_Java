@@ -19,7 +19,6 @@ import javafx.util.Duration;
 /**
  * Displays the credits of the Tetris game.
  *
- * Author: Cyberlog - Groupe 2
  * Date: 2023-02-16
  * Version: 1.0
  **/
@@ -28,10 +27,7 @@ public class CreditPage extends Application {
     private static final String[] CREDITS = {
             "This game was created by, ",
             "this awesome squad :",
-            "REDACTED",
-            "REDACTED",
-            "REDACTED",
-            "REDACTED"
+            "Group of 4 students"
     };
 
     private static final Duration ANIMATION_DURATION = Duration.seconds(5);

@@ -27,7 +27,7 @@ jobs:
           done
 
       # Zulu "jdk+fx" bundles JavaFX, which the game needs (the repository has no pom.xml).
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: zulu
           java-version: "17"

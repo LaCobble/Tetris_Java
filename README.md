@@ -11,12 +11,17 @@
 
 A Tetris game in Java and JavaFX, built as a team project for a school assignment.
 
-<p align="center">
-<img src="docs/images/tetris-menu.webp" width="49%" alt="Main menu with the Start, Options, Score and Quit entries">
-<img src="docs/images/tetris-game.webp" width="49%" alt="Game screen: the score, the pause button and a falling tetromino in the playfield">
-</p>
+## Screenshots
 
-*Main menu and game screen, rendered from the real JavaFX scenes.*
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%"><img src="docs/images/tetris-menu.webp" alt="Main menu with the Start, Options, Score and Quit entries over a background of coloured blocks"><br><sub>Main menu</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/images/tetris-progress.webp" alt="Game in progress: pieces stacked at the bottom of the playfield and a new square piece entering at the top"><br><sub>Game in progress</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/images/tetris-score.webp" alt="Score page: podium for the top three and the list of places 4 to 10 (sample scores built into the game)"><br><sub>Score page (built-in sample scores)</sub></td>
+  </tr>
+</table>
+
+*Snapshots of the real JavaFX scenes, taken while the game runs (key presses sent by a small test driver for the game in progress).*
 
 ## What it does
 

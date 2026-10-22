@@ -30,14 +30,14 @@ public class ScorePage extends Application {
         private static final String[][] SCORES = {
                 {"ROOT", "9999"},
                 {"Bob", "1503"},
-                {"Paul", "1345"},
+                {"Charlie", "1345"},
                 {"David", "940"},
-                {"Alexandre", "704"},
+                {"Eve", "704"},
                 {"Frank", "650"},
                 {"Grace", "403"},
-                {"Lucie", "324"},
+                {"Heidi", "324"},
                 {"Isaac", "100"},
-                {"Lucas", "1"}
+                {"Judy", "1"}
         };
 
         // private static String[][] SCORES;

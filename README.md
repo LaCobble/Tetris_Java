@@ -1,54 +1,103 @@
-# Tetris Game
+# Tetris
 
 <p align="center">
-<img src="img/Tetris.png" width=40% height=40%>
+<img src="img/Tetris.png" width="160" alt="Tetris logo">
 </p>
 
-## Description
-This project is a Tetris game implemented in Java. It was developed as a group project for a school assignment. The project was divided into two parts: object modeling and programming. Initially, a team of two members worked on the object modeling, and later, a team of four members worked on the programming phase.
+[![CI](https://github.com/LaCobble/Tetris_Java/actions/workflows/ci.yml/badge.svg)](https://github.com/LaCobble/Tetris_Java/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Java 17](https://img.shields.io/badge/Java-17-orange.svg)
+![JavaFX 17](https://img.shields.io/badge/JavaFX-17-blue.svg)
 
-The objective of the Tetris game is to manipulate falling blocks called Tetriminos to create horizontal lines without any gaps. When a line is completed, it disappears, and the player earns points. The game ends when the Tetriminos stack up to the top of the playing field.
+A Tetris game in Java and JavaFX, built as a team project for a school assignment.
 
-The project utilizes Java's object-oriented programming principles and graphical user interface components to provide an interactive and enjoyable gaming experience. 
+## Screenshots
 
-## It includes features such as:
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%"><img src="docs/images/tetris-menu.webp" alt="Main menu with the Start, Options, Score and Quit entries over a background of coloured blocks"><br><sub>Main menu</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/images/tetris-progress.webp" alt="Game in progress: pieces stacked at the bottom of the playfield and a new square piece entering at the top"><br><sub>Game in progress</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/images/tetris-score.webp" alt="Score page: podium for the top three and the list of places 4 to 10 (sample scores built into the game)"><br><sub>Score page (built-in sample scores)</sub></td>
+  </tr>
+</table>
 
-Random generation of Tetriminos
-Falling and moving Tetriminos
-Rotating Tetriminos
-Clearing completed lines
-Scoring system
-Game over condition
+*Snapshots of the real JavaFX scenes, taken while the game runs (key presses sent by a small test driver for the game in progress).*
 
-## Installation
-Ensure that you have Java Development Kit (JDK) installed on your system. If not, download and install the latest JDK from the official Oracle website.
+## What it does
 
-## Clone the repository:
+- Random generation of tetrominoes, which fall at a pace set by the difficulty.
+- Move, rotate and hard-drop the current piece.
+- Completed lines are cleared and add 10 points to the score.
+- Pause / resume button; the game ends when a new piece cannot enter the board.
+- Menu with **Start**, **Options** (difficulty: Easy, Medium, Hard, GodMode; credits), **Score** (top-3 podium) and **Quit**.
 
-```git clone https://github.com/LaCobble/tetris.git```
+### Controls
 
-Navigate to the project directory:
+The keys are laid out for an AZERTY keyboard:
 
-```cd tetris```
+| Key | Action |
+| --- | --- |
+| `Q` | Move left |
+| `D` | Move right |
+| `Z` | Rotate clockwise |
+| `S` | Hard drop |
 
-Compile the Java source files:
+## Requirements
 
-```javac *.java```
+- JDK 17 with JavaFX 17: either a JDK that bundles JavaFX (for example Azul Zulu "JDK FX", used by the CI), or a plain JDK plus the [JavaFX SDK](https://gluonhq.com/products/javafx/).
 
-## Usage
+## Build and run
 
-Use the following controls to play the game :
+With a JDK that bundles JavaFX:
 
-Left Arrow: Move the Tetrimino left
+```bash
+git clone https://github.com/LaCobble/Tetris_Java.git
+cd Tetris_Java
+javac -encoding UTF-8 -d out $(find Tetris/src/main/java -name '*.java' ! -name module-info.java)
+java -cp out:Tetris/src/main/resources com.example.tetris.Main
+```
 
-Right Arrow: Move the Tetrimino right
+With a plain JDK and the JavaFX SDK, add `--module-path /path/to/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml` to both commands.
 
-Down Arrow: Accelerate the Tetrimino's descent
+The repository contains a Maven wrapper (`tetris/mvnw`) and a `module-info.java`, but the `pom.xml` was never committed (the root `.gitignore` ignores `*.xml`), so the build above uses `javac` directly.
 
-Up Arrow: Rotate the Tetrimino clockwise
+## Project structure
 
-P: Pause the game
+```
+Tetris/src/main/
+├── java/com/example/tetris/
+│   ├── Main.java               # Main menu (entry point)
+│   ├── TetrisApplication.java  # Game screen: rendering, timers, keyboard input
+│   ├── Game.java               # Game state: current piece, start, pause, end
+│   ├── TetrisBoard.java        # Piece generation, line detection and clearing
+│   ├── Board.java, Cell.java, Point.java, Tetromino.java
+│   ├── OptionsPage.java, ScorePage.java, CreditPage.java
+│   ├── HighScoreManager.java   # Reads the high scores from a CSV file
+│   ├── Enum/TetrominoType.java
+│   └── Interfaces/             # One interface per model class
+└── resources/                  # Background images and icon
+tetris/                         # Maven wrapper and module-info.java (IntelliJ project)
+img/Tetris.png                  # Logo
+```
 
-## Contact
+On a case-insensitive file system (macOS, Windows), `Tetris/` and `tetris/` are merged into a single folder when cloning.
 
-Thank you for using the Tetris application! If you have any questions or need further assistance, please feel free to contact us.
+## What it demonstrates
+
+- **Object modelling first**: the project started with a modelling phase (interfaces for the board, cells, points, tetrominoes and the game), then the implementation.
+- Game loop with JavaFX `Timeline`s: one for the gravity tick, one for redrawing the board.
+- Grid algorithms: collision checks, rotation, line completion and clearing.
+- JavaFX UI: scenes, layouts, event handling, multiple windows (menu, options, scores, credits).
+- Team work with Git on a shared repository.
+
+## Context
+
+School group project (2023). Two students worked on the object modelling, then a team of four on the programming: [@LaCobble](https://github.com/LaCobble), [@BNA-02](https://github.com/BNA-02), [@thomas192](https://github.com/thomas192) and [@Warzia1](https://github.com/Warzia1).
+
+## Contributing
+
+This is an archived learning project, but issues and pull requests are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## License
+
+[MIT](LICENSE) © LaCobble

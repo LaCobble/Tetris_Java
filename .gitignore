@@ -7,3 +7,16 @@ prod/*.xml
 *.xml
 dev/out
 
+
+# Compiled classes and build output
+*.class
+out/
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
